@@ -83,8 +83,8 @@ cat >/var/www/html/trojan-$USERNAME.txt <<-END
     grpc-service-name: trojan-grpc
 END
 
-if [ ! -e /etc/trojan ]; then
-  mkdir -p /etc/trojan
+if [ ! -e /etc/vmess ]; then
+  mkdir -p /etc/vmess
 fi
 
 if [[ $IPLIMIT -gt 0 ]]; then
@@ -98,8 +98,11 @@ if [ -z ${Quota} ]; then
   Quota="0MB"
 fi
 
+
 # Menghapus semua karakter kecuali angka, MB, dan GB
 sanitized_input=$(echo "${Quota}" | sed -E 's/[^0-9MBmbGBgb]*//g')
+
+# Mendeteksi apakah input berisi MB atau GB
 
 if [[ $sanitized_input =~ [Mm][Bb]$ ]]; then
   c=$(echo "${sanitized_input}" | sed 's/[Mm][Bb]$//')
@@ -118,9 +121,9 @@ else
   exit 1
 fi
 
-if [[ ${c} != "0" ]]; then
-  echo "${d}" >/etc/trojan/${USERNAME}
-fi
+    if [[ ${c} != "0" ]]; then
+      echo "${d}" >/etc/trojan/${USERNAME}
+    fi
 
 if [ ! -e /etc/trojan/${USERNAME} ]; then
     Quota1="Unlimited"
@@ -129,10 +132,10 @@ else
     Quota1=$(con ${baca1})
 fi
 
-if [ ! -e /etc/kyt/limit/vmess/ip/$USERNAME ]; then
-    IPLIMIT="Unlimited"
+if [ ! -e /etc/kyt/limit/trojan/ip/$USERNAME ]; then
+    iplimit="Unlimited"
 else
-    IPLIMIT=$(cat /etc/kyt/limit/vmess/ip/$USERNAME)
+    iplimit=$(cat /etc/kyt/limit/trojan/ip/$USERNAME)
 fi
 
 
