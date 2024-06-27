@@ -1,6 +1,4 @@
 #!/bin/bash
-source /usr/local/sbin/spiner
-source /usr/local/sbin/send-bot
 
 USERNAME=$1
 PASSWORD=$2
@@ -22,7 +20,6 @@ echo > /dev/null
 fi
 
 useradd -e "${EXPIRED_AT}" -s /bin/false -M "${USERNAME}" &> /dev/null
-
 echo -e "${PASSWORD}\n${PASSWORD}\n" | passwd "${USERNAME}" &> /dev/null
 
 DATADB=$(cat /etc/ssh/.ssh.db | grep "^#ssh#" | grep -w "${USERNAME}" | awk '{print $2}')
@@ -30,21 +27,7 @@ if [[ "${DATADB}" != '' ]]; then
   sed -i "/\b${USERNAME}\b/d" /etc/ssh/.ssh.db
 fi
 echo "#ssh# ${USERNAME} ${PASSWORD} ${IPLIMIT} ${EXPIRED_AT}" >>/etc/ssh/.ssh.db
-clear
 
-#kirim Bot
-if [ ! -e /etc/active ]; then
-  mkdir -p /etc/active
-fi
-
-if [ -e "/etc/active/1-ssh" ]; then
-    send_ssh
-else
-    echo -e ""
-fi
-
-clear
-echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "            SSH Account"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
