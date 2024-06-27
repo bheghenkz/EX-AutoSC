@@ -18,7 +18,7 @@ fi
 useradd -e "${EXPIRED_AT}" -s /bin/false -M "${USERNAME}" &> /dev/null
 echo -e "${PASSWORD}\n${PASSWORD}\n" | passwd "${USERNAME}" &> /dev/null
 
-cat > /var/www/html/ssh-$Login.txt <<-END
+cat > /var/www/html/ssh-$USERNAME.txt <<-END
 =========================
    SmileVpn Tunneling 
 =========================
@@ -81,6 +81,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "OVPN Download    : https://$DOMAIN:81/"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Http Custom Udp  : ${DOMAIN}:1-65535@${USERNAME}:${PASSWORD}"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Save Link Account: https://$DOMAIN:81/ssh-$USERNAME.txt"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Payload WSS"
 echo "GET wss://isi_bug_disini HTTP/1.1[crlf]Host: ${DOMAIN}[crlf]Upgrade: websocket[crlf][crlf]"
