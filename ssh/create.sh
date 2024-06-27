@@ -6,6 +6,8 @@ EXPIRED_AT=$3
 IPLIMIT="2"
 
 IP=$(curl -s ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
 DOMAIN=$(cat /etc/xray/domain)
 
 if [[ $IPLIMIT -gt 0 ]]; then
@@ -28,6 +30,8 @@ Format SSH OVPN Account
 Username         : $USERNAME
 Password         : $PASSWORD
 =========================
+ISP              : $ISP
+CITY             : $CITY
 IP               : $IP
 Host             : $DOMAIN
 Port OpenSSH     : 443, 80, 22
@@ -64,6 +68,8 @@ echo "Username         : ${USERNAME}"
 echo "Password         : ${PASSWORD}"
 echo "Expired On       : ${EXPIRED_AT}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "ISP              : ${ISP}"
+echo "CITY             : ${CITY}"
 echo "IP               : ${IP}"
 echo "Host             : ${DOMAIN}"
 echo "Port OpenSSH     : 443, 80, 22"
