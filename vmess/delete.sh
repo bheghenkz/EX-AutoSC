@@ -4,7 +4,6 @@ USERNAME=$1
 EXPIRED_AT=$2
 
 sed -i "/^### ${USERNAME} ${EXPIRED_AT}/,/^},{/d" /etc/xray/config.json
-sed -i "/^### ${USERNAME} ${EXPIRED_AT}/,/^},{/d" /etc/vmess/.vmess.db
 rm -rf /etc/vmess/$USERNAME
 rm -rf /etc/kyt/limit/vmess/ip/$USERNAME
 rm -rf /etc/limit/vmess/$USERNAME

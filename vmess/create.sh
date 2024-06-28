@@ -199,11 +199,6 @@ else
     iplimit=$(cat /etc/kyt/limit/vmess/ip/$USERNAME)
 fi
 
-DATADX=$(cat /etc/vmess/.vmess.db | grep "^###" | grep -w "${USERNAME}" | awk '{print $2}')
-if [[ "${DATADX}" != '' ]]; then
-  sed -i "/\b${USERNAME}\b/d" /etc/vmess/.vmess.db
-fi
-echo "### ${USERNAME} ${EXPIRED_AT} ${UUID} ${Quota} ${IPLIMIT}" >>/etc/vmess/.vmess.db
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "        Vmess Account"
@@ -213,6 +208,8 @@ echo "ISP            : ${ISP}"
 echo "CITY           : ${CITY}"
 echo "DOMAIN         : ${DOMAIN}"
 echo "Wildcard       : (bug.com).${DOMAIN}"
+echo "User Quota     : ${Quota1}"
+echo "User Ip        : ${IPLIMIT} IP"
 echo "Port TLS       : ${TLS}"
 echo "Port none TLS  : ${NTLS}"
 echo "Port gRPC      : ${TLS}"
