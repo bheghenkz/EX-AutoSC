@@ -2,7 +2,7 @@
 
 USERNAME=$1
 EXPIRED_AT=$2
-IPLIMIT="4"
+IPLIMIT="2"
 Quota="0GB"
 
 IP=$(curl -s ipv4.icanhazip.com)
