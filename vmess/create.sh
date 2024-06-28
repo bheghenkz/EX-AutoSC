@@ -200,12 +200,10 @@ else
 fi
 
 DATADX=$(cat /etc/vmess/.vmess.db | grep "^###" | grep -w "${USERNAME}" | awk '{print $2}')
-clear
 if [[ "${DATADX}" != '' ]]; then
   sed -i "/\b${USERNAME}\b/d" /etc/vmess/.vmess.db
 fi
 echo "### ${USERNAME} ${EXPIRED_AT} ${UUID} ${Quota} ${IPLIMIT}" >>/etc/vmess/.vmess.db
-clear
 
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "        Vmess Account"
