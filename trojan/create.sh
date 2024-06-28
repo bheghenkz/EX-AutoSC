@@ -5,10 +5,18 @@ EXPIRED_AT=$2
 IPLIMIT="2"
 Quota="0GB"
 
-IP=$(curl -s ipv4.icanhazip.com)
-ISP=$(cat /etc/xray/isp)
-CITY=$(cat /etc/xray/city)
-DOMAIN=$(cat /etc/xray/domain)
+#IP=$(curl -s ipv4.icanhazip.com)
+
+source /var/lib/kyt/ipvps.conf
+
+if [[ "$IP" = "" ]]; then
+    DOMAIN=$(cat /etc/xray/domain)
+else
+    DOMAIN=$IP
+fi
+
+
+
 
 function con(){
     local -i bytes=$1;
@@ -23,7 +31,8 @@ function con(){
     fi
 }
 
-
+#ISP=$(cat /etc/xray/isp)
+#CITY=$(cat /etc/xray/city)
 # shellcheck disable=SC2002
 TLS="443"
 # shellcheck disable=SC2002
@@ -143,6 +152,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "           TROJAN ACCOUNT"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Remarks       : ${USERNAME}"
+#echo "ISP           : ${ISP}"
+#echo "CITY          : ${CITY}"
 echo "Host/IP       : ${DOMAIN}"
 echo "User Quota    : ${Quota1}"
 echo "User Ip       : ${IPLIMIT} IP"
@@ -165,4 +176,3 @@ echo "Link gRPC     : ${TROJAN_LINK_GRPC}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Expired At    : ${EXPIRED_AT} "
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "Expired At    : ${2} "
