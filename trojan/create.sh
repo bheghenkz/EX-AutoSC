@@ -2,20 +2,13 @@
 
 USERNAME=$1
 EXPIRED_AT=$2
-IPLIMIT="2"
+IPLIMIT="4"
 Quota="0GB"
 
-#IP=$(curl -s ipv4.icanhazip.com)
-
-source /var/lib/kyt/ipvps.conf
-
-if [[ "$IP" = "" ]]; then
-    DOMAIN=$(cat /etc/xray/domain)
-else
-    DOMAIN=$IP
-fi
-
-
+IP=$(curl -s ipv4.icanhazip.com)
+ISP=$(cat /etc/xray/isp)
+CITY=$(cat /etc/xray/city)
+DOMAIN=$(cat /etc/xray/domain)
 
 
 function con(){
