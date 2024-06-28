@@ -2,7 +2,7 @@
 
 sudo apt install jq -y
 
-echo "[VMESS][Step 1/4] Downloading scripts..."
+echo "[VMESS][Step 1/4] Downloading EX-AutoSCs..."
 
 curl -sS https://raw.githubusercontent.com/bheghenkz/EX-AutoSC/main/vmess/create.sh --output /usr/local/sbin/vmess-create-account
 curl -sS https://raw.githubusercontent.com/bheghenkz/EX-AutoSC/main/vmess/renew.sh --output /usr/local/sbin/vmess-renew-account
