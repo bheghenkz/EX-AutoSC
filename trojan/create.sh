@@ -85,8 +85,8 @@ cat >/var/www/html/trojan-$USERNAME.txt <<-END
     grpc-service-name: trojan-grpc
 END
 
-if [ ! -e /etc/vmess ]; then
-  mkdir -p /etc/vmess
+if [ ! -e /etc/trojan ]; then
+  mkdir -p /etc/trojan
 fi
 
 if [[ $IPLIMIT -gt 0 ]]; then
@@ -145,8 +145,8 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "           TROJAN ACCOUNT"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo "Remarks       : ${USERNAME}"
-#echo "ISP           : ${ISP}"
-#echo "CITY          : ${CITY}"
+echo "ISP           : ${ISP}"
+echo "CITY          : ${CITY}"
 echo "Host/IP       : ${DOMAIN}"
 echo "User Quota    : ${Quota1}"
 echo "User Ip       : ${IPLIMIT} IP"
