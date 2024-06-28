@@ -50,17 +50,17 @@ JSON_TLS=$(jq -n \
     --arg username "${USERNAME}" \
     --arg domain "${DOMAIN}" \
     --arg uuid "${UUID}" \
-    '{v: "2", ps: $username, add: $DOMAIN, port: "443", id: $uuid, aid: "0", net: "ws", path: "/vmess", type: "none", host: "", tls: "tls"}')
+    '{v: "2", ps: $username, add: $domain, port: "443", id: $uuid, aid: "0", net: "ws", path: "/vmess", type: "none", host: "", tls: "tls"}')
 JSON_NTLS=$(jq -n \
     --arg username "${USERNAME}" \
     --arg domain "${DOMAIN}" \
     --arg uuid "${UUID}" \
-    '{v: "2", ps: $username, add: $DOMAIN, port: "80", id: $uuid, aid: "0", net: "ws", path: "/vmess", type: "none", host: "", tls: "tls"}')
+    '{v: "2", ps: $username, add: $domain, port: "80", id: $uuid, aid: "0", net: "ws", path: "/vmess", type: "none", host: "", tls: "tls"}')
 JSON_GRPC=$(jq -n \
     --arg username "${USERNAME}" \
     --arg domain "${DOMAIN}" \
     --arg uuid "${UUID}" \
-    '{v: "2", ps: $username, add: $DOMAIN, port: "443", id: $uuid, aid: "0", net: "grpc", path: "vmess-grpc", type: "none", host: "", tls: "tls"}')
+    '{v: "2", ps: $username, add: $domain, port: "443", id: $uuid, aid: "0", net: "grpc", path: "vmess-grpc", type: "none", host: "", tls: "tls"}')
 VMESS_LINK_TLS="vmess://$(echo ${JSON_TLS} | base64 -w 0)"
 VMESS_LINK_NTLS="vmess://$(echo ${JSON_NTLS} | base64 -w 0)"
 VMESS_LINK_GRPC="vmess://$(echo ${JSON_GRPC} | base64 -w 0)"
