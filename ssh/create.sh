@@ -3,7 +3,7 @@
 USERNAME=$1
 PASSWORD=$2
 EXPIRED_AT=$3
-IPLIMIT="2"
+IPLIMIT="3"
 
 IP=$(curl -s ipv4.icanhazip.com)
 ISP=$(cat /etc/xray/isp)
